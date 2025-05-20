@@ -31,7 +31,7 @@ export default function AuthPage() {
 
   // Registration: Email confirmation required
   if (!isLogin && data.user && !data.session) {
-    alert('✅ Account created! Please confirm your email before logging in.')
+    alert('Account created! Please confirm your email before logging in.')
     return
   }
 
@@ -42,7 +42,7 @@ export default function AuthPage() {
  setTimeout(() => {
   window.location.href = '/'
 }, 1000)
- // ⏳ give it 1 second for session cookie to sync
+
   return
 }
 
