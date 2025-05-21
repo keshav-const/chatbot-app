@@ -29,13 +29,11 @@ export default function AuthPage() {
     return
   }
 
-  // Registration: Email confirmation required
   if (!isLogin && data.user && !data.session) {
     alert('Account created! Please confirm your email before logging in.')
     return
   }
 
-  // Login: successful login gives a session
   if (isLogin && data.session) {
   console.log('Login successful! Waiting for session propagation...')
 

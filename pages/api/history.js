@@ -1,20 +1,23 @@
-import { supabase } from '../../lib/supabaseClient'
+import { createPagesServerClient } from '@supabase/auth-helpers-nextjs'
 
 export default async function handler(req, res) {
+  const supabase = createPagesServerClient({ req, res })
+
   const {
     data: { session },
-    error,
   } = await supabase.auth.getSession()
 
-  if (error || !session) return res.status(401).json({ error: 'Unauthorized' })
+  if (!session) {
+    return res.status(401).json({ error: 'Unauthorized' })
+  }
 
-  const { data, error: fetchError } = await supabase
+  const { data, error } = await supabase
     .from('chat_messages')
-    .select('question, response, created_at')
+    .select('*')
     .eq('user_id', session.user.id)
     .order('created_at', { ascending: false })
 
-  if (fetchError) return res.status(500).json({ error: fetchError.message })
+  if (error) return res.status(500).json({ error: error.message })
 
-  res.status(200).json({ history: data })
+  return res.status(200).json({ history: data })
 }
