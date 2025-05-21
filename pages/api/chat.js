@@ -1,5 +1,6 @@
 
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
 import { createPagesServerClient } from '@supabase/auth-helpers-nextjs'
 import { supabaseAdmin } from '../../lib/supabaseAdmin'
 
@@ -17,6 +18,7 @@ function getRetryDelay(errorMessage, defaultDelay = 60000) {
       return (parseInt(retryDelayMatch[1]) * 1000) + 5000;
     }
   } catch (e) {
+    console.log(e);
     console.log("Could not parse retry delay from error message");
   }
   return defaultDelay;

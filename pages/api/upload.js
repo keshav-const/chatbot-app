@@ -2,8 +2,9 @@
 import { formidable } from 'formidable'
 
 
-const fs = require('fs')
-const pdfParse = require('pdf-parse')
+import fs from 'fs';
+import pdfParse from 'pdf-parse';
+
 
 export const config = {
   api: {

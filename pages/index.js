@@ -1,11 +1,11 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react'
-import { useTheme } from 'next-themes'
+//import { useTheme } from 'next-themes'
 import { motion } from 'framer-motion'
 import Header from '../components/Header'
 
 export default function ChatbotPage() {
-  const { theme } = useTheme()
+  //const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [pdfText, setPdfText] = useState('')
   const [query, setQuery] = useState('')

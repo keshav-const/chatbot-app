@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
-import { useRouter } from 'next/router'
+//import { useRouter } from 'next/router'
 
 export default function AuthPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLogin, setIsLogin] = useState(true)
   const [error, setError] = useState('')
-  const router = useRouter()
+  //const router = useRouter()
 
  const handleSubmit = async (e) => {
   e.preventDefault()
